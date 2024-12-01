@@ -17,6 +17,13 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (System.currentTimeMillis() < getUnlockTime()) {
+            Toast.makeText(this, "L'application a été cryptée en urgence.", Toast.LENGTH_LONG).show()
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_main)
 
         // Configure WebView
@@ -25,12 +32,10 @@ class MainActivity : ComponentActivity() {
         webView.settings.allowFileAccess = true
         webView.webViewClient = WebViewClient()
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
-        webView.loadUrl("file:///android_asset/mon_site/index.html") // Page de connexion initiale
+        webView.loadUrl("file:///android_asset/mon_site/index.html")
 
         // Initialiser DevicePolicyManager
         devicePolicyManager = getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
-
-        // Initialiser ComponentName avec le contexte et la classe du receiver
         componentName = ComponentName(applicationContext, MyDeviceAdminReceiver::class.java)
 
         // Vérifie si l'application est admin
@@ -39,41 +44,27 @@ class MainActivity : ComponentActivity() {
             intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName)
             intent.putExtra(
                 DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                "Veuillez activer cette application comme administrateur pour permettre le verrouillage et le redémarrage."
+                "Veuillez activer cette application comme administrateur pour permettre le verrouillage."
             )
             startActivity(intent)
         }
     }
 
+    private fun getUnlockTime(): Long {
+        val prefs = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+        return prefs.getLong("lockUntil", 0)
+    }
+
     inner class WebAppInterface(private val context: Context) {
         @JavascriptInterface
-        fun shutdownTablet() {
-            if (devicePolicyManager.isAdminActive(componentName)) {
-                try {
-                    // Simulation d'extinction via DevicePolicyManager
-                    devicePolicyManager.lockNow() // Verrouille immédiatement
-                    Toast.makeText(context, "Tablette verrouillée (extinction simulée).", Toast.LENGTH_SHORT).show()
-                } catch (e: Exception) {
-                    Toast.makeText(context, "Erreur : ${e.message}", Toast.LENGTH_LONG).show()
-                }
-            } else {
-                Toast.makeText(context, "L'application n'est pas admin de l'appareil.", Toast.LENGTH_LONG).show()
-            }
-        }
+        fun lockAppForMinutes(minutes: Int) {
+            val lockUntil = System.currentTimeMillis() + minutes * 60 * 1000
+            val prefs = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+            prefs.edit().putLong("lockUntil", lockUntil).apply()
 
-        @JavascriptInterface
-        fun restartTablet() {
-            if (devicePolicyManager.isAdminActive(componentName)) {
-                try {
-                    // Redémarrage en utilisant un message système
-                    val powerManager = getSystemService(Context.POWER_SERVICE) as android.os.PowerManager
-                    powerManager.reboot(null) // Demande un redémarrage (si autorisé)
-                } catch (e: Exception) {
-                    Toast.makeText(context, "Erreur lors du redémarrage : ${e.message}", Toast.LENGTH_LONG).show()
-                }
-            } else {
-                Toast.makeText(context, "L'application n'est pas admin de l'appareil.", Toast.LENGTH_LONG).show()
-            }
+            Toast.makeText(context, "L'application a été cryptée en urgence.", Toast.LENGTH_LONG).show()
+
+            finish() // Fermer l'application
         }
     }
 }

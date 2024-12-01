@@ -1,107 +1,141 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #FFFFFF;
-  margin: 0;
-  padding: 0;
-  text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 #menu {
-  background-color: #1F1F1F;
-  padding: 10px;
+    background-color: #1F1F1F;
+    padding: 10px;
 }
 
 #menu ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
 }
 
 #menu li {
-  margin: 0 15px;
+    margin: 0 15px;
 }
 
 #menu a {
-  color: #FFFFFF;
-  text-decoration: none;
-  font-size: 1.1em;
-  padding: 8px 16px;
-  transition: background-color 0.3s;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
 }
 
 #menu a:hover, #menu .active {
-  background-color: #4CAF50; /* Vert vif */
+    background-color: #4CAF50; /* Vert vif */
 }
 
 .page-title {
-  font-size: 1.8em;
-  color: #4CAF50;
-  margin-top: 20px;
+    font-size: 1.8em;
+    color: #4CAF50;
+    margin-top: 20px;
 }
 
 #trace-eraser {
-  background-color: #1F1F1F;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  margin: 30px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #1F1F1F;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #trace-eraser p {
-  font-size: 1.1em;
-  margin: 10px 0;
+    font-size: 1.1em;
+    margin: 10px 0;
 }
 
-#erase-btn {
-  background-color: #4CAF50;
-  color: #FFFFFF;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 15px;
+#erase-btn, .warning-btn, button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #ff0000; /* Rouge vif */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
 }
 
-#erase-btn:hover {
-  background-color: #388E3C;
-}
-@keyframes textGlitch {
-    0%, 100% { transform: translate(0); opacity: 1; }
-    10% { transform: translate(-2px, 2px); opacity: 0.8; }
-    20% { transform: translate(2px, -2px); opacity: 0.6; }
-    30% { transform: translate(-1px, 1px); opacity: 0.8; }
+#erase-btn:hover, .warning-btn:hover, button:hover {
+    background-color: #cc0000;
+    transform: scale(1.1);
 }
 
-@keyframes screenFlicker {
-    0% { background-color: black; }
-    10%, 90% { background-color: #000000; }
-    20%, 80% { background-color: #0c0c0c; }
-    30%, 70% { background-color: #101010; }
-    40%, 60% { background-color: #1a1a1a; }
-    50% { background-color: #00ff00; }
+#container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Conteneur de la barre de progression */
+#progress-bar-container {
+    width: 80%;
+    height: 30px;
+    border: 2px solid #333;
+    margin: 20px auto;
+    background-color: #f3f3f3; /* Couleur de fond par défaut */
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: 0; /* Masque la barre initialement */
+    transition: opacity 0.5s ease; /* Transition fluide pour l'apparition */
+}
+
+/* Barre de progression */
+#progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    transition: width 0.1s ease;
 }
 
 #glitch-screen {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
     font-family: "Courier New", Courier, monospace;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #00ff00;
-    background-color: black;
+    z-index: 9999;
     animation: screenFlicker 2s infinite;
 }
 
 .glitch-text {
-    animation: textGlitch 0.2s infinite;
+    animation: textGlitch 0.2s infinite alternate;
 }
-/* Animation d'extinction */
+
+/* Animations */
+@keyframes textGlitch {
+    0% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(5px); opacity: 0.8; }
+    100% { transform: translateX(-5px); opacity: 1; }
+}
+
+@keyframes screenFlicker {
+    0%, 100% { background-color: black; }
+    50% { background-color: #002200; }
+}
+
 @keyframes shutdown-animation {
     0% {
         opacity: 1;
@@ -123,41 +157,4 @@ body {
     z-index: 9999;
     animation: shutdown-animation 3s forwards;
     display: none;
-}
-#container {
-    text-align: center;
-    margin-top: 50px;
-    font-family: Arial, sans-serif;
-}
-
-#progress-bar-container {
-    width: 80%;
-    height: 30px;
-    border: 2px solid #333;
-    margin: 20px auto;
-    background-color: #f3f3f3;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-#progress-bar {
-    width: 0;
-    height: 100%;
-    background-color: #4caf50;
-    transition: width 0.1s ease;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
 }
