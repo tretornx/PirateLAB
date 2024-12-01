@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vidéosurveillance</title>
+  <link rel="stylesheet" href="css/style_general.css">
+  <link rel="stylesheet" href="css/style_background.css">
+  <link rel="stylesheet" href="css/style_login.css">
+  <link rel="stylesheet" href="css/style_menu.css">
+  <link rel="stylesheet" href="css/style_components.css">
+  <link rel="stylesheet" href="css/style_results.css">
+  <link rel="stylesheet" href="css/style_videos.css">
+  <link rel="stylesheet" href="css/dialog.css">
+</head>
+<body>
+<header>
+  <nav id="menu">
+    <button id="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+    <ul>
+      <li><a href="dashboard.html" class="active">Accueil</a></li>
+      <li><a href="localisation.html">Localiser</a></li>
+      <li><a href="videosurveillance.html">Hack Vidéo Distant</a></li>
+      <li><a href="generateur_identifiants.html">Générateur de Faux Identifiants</a></li>
+      <li><a href="effaceur_traces.html">Effaceur de Traces</a></li>
+      <li><a href="respiration.html">Respiration</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div id="content">
+  <h2 class="page-title" style="text-align: center">Vérification d'accès</h2>
+  <form id="access-form" onsubmit="checkAccess(event)">
+    <label for="brand">Marque :</label>
+    <input type="text" id="brand" placeholder="Entrez la marque" required>
+
+    <label for="serial-number">Numéro de série :</label>
+    <input type="text" id="serial-number" placeholder="Entrez le numéro de série" required>
+
+    <button type="submit">Valider</button>
+  </form>
+
+  <div id="video-section" style="display: none;">
+    <div class="video-gallery">
+      <div class="video-item">
+        <video controls>
+          <source src="media/LS-Couloir-2R.webm" type="video/webm">
+          <source src="media/LS-Couloir-2R.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture de cette vidéo.
+        </video>
+        <p class="video-title">Couloir</p>
+      </div>
+      <div class="video-item">
+        <video controls>
+          <source src="media/LS-Porte-CaveR.webm" type="video/webm">
+          <source src="media/LS-Porte-CaveR.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture de cette vidéo.
+        </video>
+        <p class="video-title">Porte Cave</p>
+      </div>
+      <div class="video-item">
+        <video controls>
+          <source src="media/LS-Porte-Cave-2R.webm" type="video/webm">
+          <source src="media/LS-Porte-Cave-2R.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la lecture de cette vidéo.
+        </video>
+        <p class="video-title">Porte Cave 2</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/dashboard.js"></script>
+<script src="js/dialog.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Fonction d'initialisation du formulaire et de la section vidéo
+    const form = document.getElementById("access-form");
+    const videoSection = document.getElementById("video-section");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const brand = document.getElementById("brand").value;
+      const serialNumber = document.getElementById("serial-number").value;
+
+      if (brand && serialNumber) {
+        videoSection.style.display = "block";
+      } else {
+        showCustomDialog("Veuillez remplir tous les champs.");
+        videoSection.style.display = "none";
+      }
+    });
+  });
+</script>
+</body>
+</html>

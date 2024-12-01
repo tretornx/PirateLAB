@@ -1,0 +1,86 @@
+#menu {
+  background-color: #2B2B2B; /* Fond légèrement plus clair */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0; /* Espacement vertical pour plus d'aération */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombre pour le relief */
+}
+
+#menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 25px; /* Augmenter l'espace entre les éléments */
+}
+
+#menu li {
+  margin: 0;
+}
+
+#menu button, #menu a {
+  padding: 12px 20px;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: none;
+  border-bottom: 3px solid transparent; /* Bordure plus épaisse */
+  font-size: 1.1em; /* Taille de texte légèrement augmentée */
+  text-decoration: none;
+  transition: all 0.3s ease; /* Transition sur tous les éléments */
+}
+
+#menu button:hover, #menu a:hover {
+  color: #4CAF50; /* Texte vert au survol */
+  border-bottom: 3px solid #4CAF50; /* Soulignement vert */
+  transform: scale(1.05); /* Légère mise en avant */
+}
+
+#menu .active {
+  border-bottom: 3px solid #4CAF50; /* Couleur active renforcée */
+  color: #4CAF50;
+}
+
+/* Menu burger et déroulant pour les petits écrans */
+#menu-toggle {
+  display: none;
+}
+
+/* Affichage pour les petits écrans */
+@media screen and (max-width: 768px) {
+  #menu ul {
+    display: none; /* Cache le menu par défaut sur mobile */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #1F1F1F;
+  }
+
+  #menu li {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  #menu-toggle {
+    display: block; /* Affiche le bouton burger */
+    background: none;
+    color: #FFFFFF;
+    border: none;
+    font-size: 1.5em;
+    padding: 15px;
+    cursor: pointer;
+  }
+
+  /* Affiche le menu déroulant lorsque le menu est actif */
+  /* Assure que le menu reste visible quand il est actif sur mobile */
+  #menu.active ul {
+    display: flex !important;
+  }
+
+}

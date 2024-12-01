@@ -1,0 +1,126 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#menu {
+  background-color: #1F1F1F;
+  padding: 10px;
+}
+
+#menu ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+#menu li {
+  margin: 0 15px;
+}
+
+#menu a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 8px 16px;
+  transition: background-color 0.3s;
+}
+
+#menu a:hover, #menu .active {
+  background-color: #4CAF50; /* Vert vif */
+}
+
+.page-title {
+  font-size: 1.8em;
+  color: #4CAF50;
+  margin-top: 20px;
+}
+
+#trace-eraser {
+  background-color: #1F1F1F;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 30px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#trace-eraser p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+#erase-btn {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+#erase-btn:hover {
+  background-color: #388E3C;
+}
+@keyframes textGlitch {
+    0%, 100% { transform: translate(0); opacity: 1; }
+    10% { transform: translate(-2px, 2px); opacity: 0.8; }
+    20% { transform: translate(2px, -2px); opacity: 0.6; }
+    30% { transform: translate(-1px, 1px); opacity: 0.8; }
+}
+
+@keyframes screenFlicker {
+    0% { background-color: black; }
+    10%, 90% { background-color: #000000; }
+    20%, 80% { background-color: #0c0c0c; }
+    30%, 70% { background-color: #101010; }
+    40%, 60% { background-color: #1a1a1a; }
+    50% { background-color: #00ff00; }
+}
+
+#glitch-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.5rem;
+    color: #00ff00;
+    background-color: black;
+    animation: screenFlicker 2s infinite;
+}
+
+.glitch-text {
+    animation: textGlitch 0.2s infinite;
+}
+/* Animation d'extinction */
+@keyframes shutdown-animation {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        background-color: black;
+    }
+}
+
+#shutdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 1;
+    z-index: 9999;
+    animation: shutdown-animation 3s forwards;
+    display: none;
+}

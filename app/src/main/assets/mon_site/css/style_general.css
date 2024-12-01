@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 20px 0;
+  color: #4CAF50; /* Vert */
+}
+
+.page-title {
+  color: #4CAF50; /* Vert vif pour correspondre à l’onglet actif */
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-top: 20px;
+}
+
+.image-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-item {
+  position: relative;
+  width: fit-content;
+}
+
+.responsive-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+/* Adaptation pour les petits écrans */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .page-title {
+    font-size: 1.1em; /* Taille réduite */
+  }
+
+  .responsive-image {
+    width: 100%;
+    max-width: 100%; /* Empêche de dépasser la largeur de l'écran */
+  }
+}

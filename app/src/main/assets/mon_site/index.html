@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Escape Game - Pirate 80's</title>
+  <link rel="stylesheet" href="css/style_general.css">
+  <link rel="stylesheet" href="css/style_background.css">
+  <link rel="stylesheet" href="css/style_login.css">
+  <link rel="stylesheet" href="css/style_menu.css">
+  <link rel="stylesheet" href="css/style_components.css">
+  <link rel="stylesheet" href="css/style_results.css">
+  <link rel="stylesheet" href="css/style_videos.css">
+  <link rel="stylesheet" href="css/dialog.css">
+
+  <style>
+    .console-item {
+      width: 100px;
+      height: auto;
+      margin: 10px;
+      cursor: grab;
+      text-align: center;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .console-item img {
+      width: 100%;
+      height: auto;
+    }
+
+    #console-items {
+      display: flex;
+      gap: 15px;
+      flex-wrap: nowrap;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    #console-puzzle-container {
+      text-align: center;
+    }
+
+    #validate-order, #retour-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #4CAF50; /* Vert vif */
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      margin: 20px auto 0;
+      transition: background-color 0.3s;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    #validate-order:hover, #retour-button:hover {
+      background-color: #388E3C; /* Vert foncé */
+    }
+    /* Style pour l'indice */
+    /* Style pour l'indice avec italique, gras et taille plus grande */
+    #indice {
+      color: red;
+      font-size: 1.5em; /* Augmente la taille du texte */
+      font-style: italic; /* Met en italique */
+      font-weight: bold; /* Met en gras */
+      margin-top: 15px;
+      opacity: 0; /* Initialement invisible */
+      transition: opacity 4s ease-in; /* Effet de fondu plus lent */
+      text-align: center;
+    }
+    .hide-background .background-image {
+      display: none;
+    }
+    .instruction {
+      text-align: center;
+      font-weight: bold;
+      color: #f0e68c; /* Jaune clair pour bien contraster sur un fond sombre */
+      font-size: 1.2em;
+      margin-bottom: 15px; /* Ajoute un espace entre le texte et le puzzle */
+      margin-top: 20px; /* Ajoute un espace au-dessus pour ne pas être trop collé au contenu précédent */
+    }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<!-- Arrière-plan -->
+<div class="background-image"></div>
+
+<!-- Conteneur principal -->
+<div id="login-container">
+  <form id="login-form">
+    <div class="input-group">
+      <label for="email">ID</label>
+      <input type="email" id="email" placeholder="Entrez votre email" required>
+    </div>
+    <div class="input-group">
+      <label for="password">PASSWORD</label>
+      <input type="password" id="password" placeholder="Entrez votre mot de passe" required>
+    </div>
+    <button type="button" id="login-button">Connexion</button>
+    <p><a href="#" id="hint-link">Mot de passe oublié ?</a></p>
+  </form>
+</div>
+
+<!-- Conteneur pour le puzzle des consoles -->
+<div id="console-puzzle-container" style="display: none;">
+  <div id="console-items"></div>
+  <button id="validate-order">Valider l'ordre</button>
+</div>
+
+<!-- Scripts -->
+<script src="js/app.js"></script>
+<script src="js/dialog.js"></script>
+
+</body>
+</html>

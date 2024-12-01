@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><!DOCTYPE html>
+    <html lang="fr">
+    <head>
+    <meta charset="UTF-8">
+    <title>Effaceur de Traces</title>
+  <link rel="stylesheet" href="css/style_effaceur.css">
+  <link rel="stylesheet" href="css/dialog.css">
+
+</head>
+<body>
+<header>
+  <nav id="menu">
+    <button id="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+    <ul>
+      <li><a href="dashboard.html" class="active">Accueil</a></li>
+      <li><a href="localisation.html">Localiser</a></li>
+      <li><a href="videosurveillance.html">Hack Vidéo Distant</a></li>
+      <li><a href="generateur_identifiants.html">Générateur de Faux Identifiants</a></li>
+      <li><a href="effaceur_traces.html">Effaceur de Traces</a></li>
+      <li><a href="respiration.html">Respiration</a></li>
+
+    </ul>
+  </nav>
+
+</header>
+<div id="shutdown-overlay"></div>
+
+<script>
+  function startShutdown() {
+      document.getElementById("shutdown-overlay").style.display = "block";
+      setTimeout(() => {
+          Android.shutdownTablet();
+      }, 3000); // Extinction après 3 secondes
+  }
+</script>
+<div id="content">
+  <h2 class="page-title">Effaceur de Traces</h2>
+  <div id="hacker-animation" style="display: none;">
+    <pre id="hacker-text"></pre>
+  </div>
+  <div id="trace-eraser">
+    <p>Cliquez sur le bouton ci-dessous pour effacer toutes les traces d'activité.</p>
+    <button id="erase-btn">Effacer les traces</button>
+    <button id="shutdown-btn">Éteindre la tablette</button>
+    <p id="confirmation-message" style="display: none; color: #4CAF50; margin-top: 20px;">Les traces ont été effacées avec succès !</p>
+  </div>
+</div>
+
+
+<script src="js/effaceur_traces.js"></script>
+<script src="js/dialog.js"></script>
+
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* style_videos.css */
+
+.video-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.video-item {
+  border: 2px solid #4CAF50; /* Couleur de contour */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.video-item video {
+  width: 100%;
+  height: auto;
+}
+
+.video-item:hover {
+  transform: scale(1.02);
+}
+
+.video-title {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+#pirate-animation {
+  display: none; /* Masqué par défaut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: #00FF00; /* Couleur style "terminal" */
+  font-family: monospace;
+  font-size: 1.5em;
+  overflow: hidden;
+  z-index: 1000;
+  text-align: center;
+  padding-top: 20%;
+}
+
+#pirate-animation p {
+  opacity: 0;
+  animation: fadeText 1s linear infinite alternate;
+}
+
+@keyframes fadeText {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,18 @@
+<!-- geolocation_banner.svg -->
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond représentant une carte -->
+  <rect width="800" height="200" fill="#1a1a1a" />
+
+  <!-- Cercles pour symboliser les marqueurs de localisation -->
+  <circle cx="200" cy="100" r="20" fill="#00ff00" />
+  <circle cx="400" cy="60" r="20" fill="#00ff00" />
+  <circle cx="600" cy="140" r="20" fill="#00ff00" />
+
+  <!-- Lignes pour relier les marqueurs -->
+  <line x1="200" y1="100" x2="400" y2="60" stroke="#00ff00" stroke-width="2" />
+  <line x1="400" y1="60" x2="600" y2="140" stroke="#00ff00" stroke-width="2" />
+  <line x1="600" y1="140" x2="200" y2="100" stroke="#00ff00" stroke-width="2" />
+
+  <!-- Texte "Géolocalisation" -->
+  <text x="400" y="190" font-size="32" fill="#00ff00" text-anchor="middle" font-family="Courier New">Géolocalisation</text>
+</svg>

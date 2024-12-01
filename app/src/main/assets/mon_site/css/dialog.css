@@ -1,0 +1,49 @@
+/* Overlay sombre pour le fond de la boîte de dialogue */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Boîte de dialogue */
+.dialog-box {
+  background: #1F1F1F; /* Fond sombre pour s'intégrer au reste du site */
+  color: #FFFFFF;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour le relief */
+  text-align: center;
+}
+
+/* Titre de la boîte de dialogue */
+.dialog-title {
+  color: #4CAF50; /* Titre en vert vif */
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+/* Bouton de fermeture de la boîte de dialogue */
+.dialog-button {
+  background: #4CAF50; /* Vert vif pour le bouton */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.dialog-button:hover {
+  background: #388E3C; /* Vert foncé lors du survol */
+}

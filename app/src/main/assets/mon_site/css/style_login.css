@@ -1,0 +1,95 @@
+/* Styles pour le conteneur de connexion */
+#login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: rgba(31, 31, 31, 0.9);
+  border-radius: 10px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#login-container h1 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #4CAF50; /* Vert vif */
+}
+
+#login-form {
+  width: 100%;
+}
+
+#login-form .input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#login-form label {
+  display: block;
+  font-size: 1em;
+  color: #4CAF50; /* Texte vert */
+  margin-bottom: 5px;
+}
+
+#login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1em;
+  border: 1px solid #4CAF50; /* Bordure verte */
+  border-radius: 5px;
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+  box-sizing: border-box; /* Pour s'assurer que la bordure est incluse dans la largeur */
+  transition: border-color 0.3s;
+}
+
+#login-form input:focus {
+  border-color: #388E3C; /* Vert foncé en focus */
+  outline: none;
+}
+
+#login-form input::placeholder {
+  color: #AAAAAA; /* Couleur plus claire pour le placeholder */
+}
+
+#login-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #4CAF50; /* Vert vif */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+#login-button:hover {
+  background-color: #388E3C; /* Vert foncé au survol */
+}
+
+#hint-link {
+  color: #4CAF50;
+  text-decoration: none;
+  font-size: 0.9em;
+  display: block;
+  margin-top: 20px;
+}
+
+#hint-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsivité pour les petits écrans */
+@media screen and (max-width: 768px) {
+  #login-container, #access-form {
+    padding: 15px;
+    width: 90%; /* Limite la largeur sur petit écran */
+  }
+
+  #access-form input[type="text"], #access-form button,
+  #login-form input, #login-button {
+    width: 100%; /* S'adapte à la largeur disponible */
+  }
+}

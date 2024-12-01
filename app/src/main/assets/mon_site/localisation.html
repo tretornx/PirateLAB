@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Localisation</title>
+  <link rel="stylesheet" href="css/style_general.css">
+  <link rel="stylesheet" href="css/style_background.css">
+  <link rel="stylesheet" href="css/style_login.css">
+  <link rel="stylesheet" href="css/style_menu.css">
+  <link rel="stylesheet" href="css/style_components.css">
+  <link rel="stylesheet" href="css/style_results.css">
+  <link rel="stylesheet" href="css/style_videos.css">
+  <link rel="stylesheet" href="css/dialog.css">
+
+</head>
+<body>
+<!-- En-tête -->
+<header>
+  <nav id="menu">
+    <button id="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+    <ul>
+      <li><a href="dashboard.html" class="active">Accueil</a></li>
+      <li><a href="localisation.html">Localiser</a></li>
+      <li><a href="videosurveillance.html">Hack Vidéo Distant</a></li>
+      <li><a href="generateur_identifiants.html">Générateur de Faux Identifiants</a></li>
+      <li><a href="effaceur_traces.html">Effaceur de Traces</a></li>
+      <li><a href="respiration.html">Respiration</a></li>
+
+    </ul>
+  </nav>
+
+</header>
+
+<!-- Contenu principal -->
+<div id="content">
+  <h3 class="page-title" style="text-align: center">Images de localisation</h3>
+  <!-- Section d'images de localisation -->
+  <div class="image-container">
+    <div class="image-item">
+      <img src="img/image1.jpg" alt="Image localisation 1" class="responsive-image">
+      <p class="overlay-text">Il y a 15 minutes</p>
+    </div>
+    <div class="image-item">
+      <img src="img/image2.jpg" alt="Image localisation 2" class="responsive-image">
+      <p class="overlay-text">Il y a 12 minutes</p>
+    </div>
+    <div class="image-item">
+      <img src="img/image3.jpg" alt="Image localisation 3" class="responsive-image">
+      <p class="overlay-text">Il y a 10 minutes</p>
+    </div>
+    <div class="image-item">
+      <img src="img/image4.jpg" alt="Image localisation 4" class="responsive-image">
+      <p class="overlay-text">Il y a 8 minutes</p>
+    </div>
+    <div class="image-item">
+      <img src="img/image5.jpg" alt="Image localisation 5" class="responsive-image">
+      <p class="overlay-text">Il y a 5 minutes</p>
+    </div>
+  </div>
+
+  <!-- Bouton pour accéder à la triangulation -->
+  <section id="access-triangulation">
+    <button id="triangulation-button" class="ok-button" onclick="window.location.href='triangulation.html'">Accéder à la triangulation</button>
+  </section>
+</div>
+
+<!-- Scripts -->
+<script src="js/dashboard.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/localisation.js"></script>
+<script src="js/dialog.js"></script>
+
+</body>
+</html>
