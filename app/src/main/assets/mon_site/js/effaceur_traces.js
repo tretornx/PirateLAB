@@ -1,43 +1,33 @@
-document.getElementById('erase-btn').addEventListener('click', function () {
-    // Supprime tout le contenu actuel de la page
-    document.body.innerHTML = '';
+document.addEventListener("DOMContentLoaded", () => {
+  const startButton = document.getElementById("start-erasing-btn");
+  const progressSection = document.getElementById("progress-section");
+  const progressBar = document.getElementById("progress-bar");
+  const statusMessage = document.getElementById("status-message");
+  const completionSection = document.getElementById("completion-section");
 
-    // Crée le conteneur de l'animation
-    const glitchScreen = document.createElement('div');
-    glitchScreen.id = 'glitch-screen';
-    glitchScreen.innerHTML = `
-        <div class="glitch-text">EFFACEMENT EN COURS...</div>
-    `;
-    document.body.appendChild(glitchScreen);
+  startButton.addEventListener("click", () => {
+    startButton.style.display = "none";
+    progressSection.style.display = "block";
 
-    // Arrête l’animation après 5 secondes
-    setTimeout(() => {
-        glitchScreen.innerHTML = `
-            <div class="glitch-text">EFFACEMENT TERMINÉ. PRÉPARATION POUR L'EXTINCTION...</div>
-        `;
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 10;
+      progressBar.value = progress;
 
-        // Optionnel : Ajouter un délai avant l'extinction
-        setTimeout(() => {
-            // Place le code pour éteindre la tablette ici
-            alert("Simuler l'extinction ici !");
-        }, 3000);
-    }, 5000);
+      if (progress >= 100) {
+        clearInterval(interval);
+        statusMessage.textContent = "Effacement terminé.";
+        progressSection.style.display = "none";
+        completionSection.style.display = "block";
+      }
+    }, 500); // Avance toutes les 500 ms
+  });
 });
-document.getElementById('shutdown-btn').addEventListener('click', function () {
-    if (typeof Android !== 'undefined') {
-        Android.lockScreenForMinutes(5); // Verrouille l’écran pour 5 minutes
-    } else {
-        alert("Interface Android non disponible.");
-    }
-});
-// Fonction pour éteindre la tablette
-function shutdownDevice() {
-    if (typeof Android !== "undefined" && Android.shutdownTablet) {
-        Android.shutdownTablet();
-    } else {
-        alert("Extinction impossible !");
-    }
+
+function restartTablet() {
+  if (typeof Android !== "undefined" && Android.restartTablet) {
+    Android.restartTablet();
+  } else {
+    console.error("Méthode restartTablet non disponible.");
+  }
 }
-
-// Associer la fonction au bouton
-document.getElementById("shutdown-btn").addEventListener("click", shutdownDevice);

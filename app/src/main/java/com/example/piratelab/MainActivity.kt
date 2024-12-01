@@ -29,7 +29,9 @@ class MainActivity : ComponentActivity() {
 
         // Initialiser DevicePolicyManager
         devicePolicyManager = getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
-        componentName = ComponentName(this, MyDeviceAdminReceiver::class.java)
+
+        // Initialiser ComponentName avec le contexte et la classe du receiver
+        componentName = ComponentName(applicationContext, MyDeviceAdminReceiver::class.java)
 
         // Vérifie si l'application est admin
         if (!devicePolicyManager.isAdminActive(componentName)) {
@@ -48,7 +50,7 @@ class MainActivity : ComponentActivity() {
         fun shutdownTablet() {
             if (devicePolicyManager.isAdminActive(componentName)) {
                 try {
-                    // Simulation d'extinction
+                    // Simulation d'extinction via DevicePolicyManager
                     devicePolicyManager.lockNow() // Verrouille immédiatement
                     Toast.makeText(context, "Tablette verrouillée (extinction simulée).", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
