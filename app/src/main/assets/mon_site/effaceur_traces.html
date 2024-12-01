@@ -2,28 +2,18 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Effaceur de traces</title>
+  <title>Effaceur de Traces</title>
   <link rel="stylesheet" href="css/style_general.css">
   <link rel="stylesheet" href="css/style_effaceur.css">
 </head>
 <body>
-<div id="main-content" class="effaceur-container">
-  <h1 class="effaceur-title">Effaceur de traces</h1>
-  <p class="effaceur-description">Ce processus va effacer toutes les traces de manière irréversible.</p>
-  <button id="start-erasing-btn" class="effaceur-btn">Commencer l'effacement</button>
-
-  <div id="progress-section" class="progress-container" style="display:none;">
-    <p id="status-message" class="progress-status">Effacement en cours...</p>
-    <progress id="progress-bar" class="progress-bar" value="0" max="100"></progress>
-  </div>
-
-  <div id="completion-section" class="completion-container" style="display:none;">
-    <p class="completion-message">Effacement terminé.</p>
-    <button id="restart-btn" class="effaceur-btn" onclick="restartTablet()">Redémarrer la tablette</button>
+<div id="container">
+  <h1>Effaceur de Traces</h1>
+  <button id="start-progress-btn">Commencer l'effacement</button>
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
   </div>
 </div>
-
 <script src="js/effaceur_traces.js"></script>
 </body>
 </html>

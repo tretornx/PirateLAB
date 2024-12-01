@@ -1,33 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const startButton = document.getElementById("start-erasing-btn");
-  const progressSection = document.getElementById("progress-section");
-  const progressBar = document.getElementById("progress-bar");
-  const statusMessage = document.getElementById("status-message");
-  const completionSection = document.getElementById("completion-section");
+document.getElementById("start-progress-btn").addEventListener("click", startProgress);
 
-  startButton.addEventListener("click", () => {
-    startButton.style.display = "none";
-    progressSection.style.display = "block";
+function startProgress() {
+    const progressBar = document.getElementById("progress-bar");
+    progressBar.style.width = "0%"; // Réinitialise la barre
 
     let progress = 0;
     const interval = setInterval(() => {
-      progress += 10;
-      progressBar.value = progress;
+        progress += 5;
+        progressBar.style.width = progress + "%";
 
-      if (progress >= 100) {
-        clearInterval(interval);
-        statusMessage.textContent = "Effacement terminé.";
-        progressSection.style.display = "none";
-        completionSection.style.display = "block";
-      }
-    }, 500); // Avance toutes les 500 ms
-  });
-});
-
-function restartTablet() {
-  if (typeof Android !== "undefined" && Android.restartTablet) {
-    Android.restartTablet();
-  } else {
-    console.error("Méthode restartTablet non disponible.");
-  }
+        if (progress >= 100) {
+            clearInterval(interval);
+            alert("Effacement terminé ! La tablette va redémarrer.");
+            // Appeler la méthode Java pour redémarrer
+            Android.restartTablet();
+        }
+    }, 100); // Augmente de 5% toutes les 100ms
 }

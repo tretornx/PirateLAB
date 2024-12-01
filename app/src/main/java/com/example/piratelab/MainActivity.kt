@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
             intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName)
             intent.putExtra(
                 DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                "Veuillez activer cette application comme administrateur pour permettre le verrouillage et l’extinction."
+                "Veuillez activer cette application comme administrateur pour permettre le verrouillage et le redémarrage."
             )
             startActivity(intent)
         }
@@ -55,6 +55,21 @@ class MainActivity : ComponentActivity() {
                     Toast.makeText(context, "Tablette verrouillée (extinction simulée).", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
                     Toast.makeText(context, "Erreur : ${e.message}", Toast.LENGTH_LONG).show()
+                }
+            } else {
+                Toast.makeText(context, "L'application n'est pas admin de l'appareil.", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        @JavascriptInterface
+        fun restartTablet() {
+            if (devicePolicyManager.isAdminActive(componentName)) {
+                try {
+                    // Redémarrage en utilisant un message système
+                    val powerManager = getSystemService(Context.POWER_SERVICE) as android.os.PowerManager
+                    powerManager.reboot(null) // Demande un redémarrage (si autorisé)
+                } catch (e: Exception) {
+                    Toast.makeText(context, "Erreur lors du redémarrage : ${e.message}", Toast.LENGTH_LONG).show()
                 }
             } else {
                 Toast.makeText(context, "L'application n'est pas admin de l'appareil.", Toast.LENGTH_LONG).show()
